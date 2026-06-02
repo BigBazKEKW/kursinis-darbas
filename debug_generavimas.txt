@@ -1,0 +1,10 @@
+Failas;Generavimo_laikas_mikros
+duomenys_5000_atsitiktiniai.txt;1506
+duomenys_5000_atvirkstiniai.txt;1622
+duomenys_5000_surikiuoti.txt;1120
+duomenys_10000_atsitiktiniai.txt;2529
+duomenys_10000_atvirkstiniai.txt;1737
+duomenys_10000_surikiuoti.txt;1878
+duomenys_50000_atsitiktiniai.txt;9648
+duomenys_50000_atvirkstiniai.txt;8805
+duomenys_50000_surikiuoti.txt;6823
