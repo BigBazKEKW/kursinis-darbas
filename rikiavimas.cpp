@@ -1,11 +1,3 @@
-// ============================================================
-// Programa: Selection sort ir Merge sort lyginamoji analizė
-// Standartas: C++17
-// Aprašymas: programa sugeneruoja testinius duomenų failus,
-// paleidžia abu rikiavimo algoritmus po kelis kartus,
-// matuoja laiką, palyginimų ir sukeitimų/priskyrimų skaičių,
-// išveda rezultatus į ekraną bei CSV failus.
-// ============================================================
 
 #include <iostream>   // įvesties/išvesties srautai (cout, cerr)
 #include <fstream>    // failų srautai (ifstream, ofstream)
@@ -22,9 +14,7 @@
 using namespace std;
 using namespace std::chrono;
 
-// ============================================================
-// ===== Duomenų struktūros =====
-// ============================================================
+// Duomenų struktūros
 
 // Struktūra vieno bandymo (vieno paleidimo) rezultatui saugoti
 struct RunResult
@@ -38,9 +28,7 @@ struct RunResult
     uint64_t sukeitimai;     // sukeitimų (selection) arba priskyrimų (merge) skaičius
 };
 
-// ============================================================
 // ===== Pagalbinės funkcijos failams =====
-// ============================================================
 
 // Funkcija: tikrina, ar nurodytas failas egzistuoja diske
 // Parametrai: kelias - failo pavadinimas
@@ -52,7 +40,7 @@ bool failasEgzistuoja(const string &kelias)
 }
 
 // Funkcija: sugeneruoja duomenis pagal tipą ir įrašo į tekstinį failą
-// Parametrai: dydis - kiek elementų; tipas - duomenų tipas; failoVardas - į kurį failą rašyti
+// Parametrai: dydis - kiek elementų, tipas - duomenų tipas, failoVardas - į kurį failą rašyti
 // Grąžina: nieko (void), bet sukuria failą diske
 void generuotiFaila(int dydis, const string &tipas, const string &failoVardas)
 {
@@ -68,7 +56,7 @@ void generuotiFaila(int dydis, const string &tipas, const string &failoVardas)
 
     if (tipas == "atsitiktiniai")
     {
-        // Inicializuojame atsitiktinių skaičių generatorių su fiksuota sėkla,
+        // Inicializuojame atsitiktinių skaičių generatorių su fiksuota seed'u,
         // kad rezultatai būtų atkartojami
         mt19937 gen(12345);
         uniform_int_distribution<int> dist(1, 1000000); // intervalas [1, 1000000]
@@ -124,9 +112,7 @@ vector<int> skaitytiFaila(const string &failoVardas)
     return rez;
 }
 
-// ============================================================
-// ===== Rikiavimo algoritmai =====
-// ============================================================
+// ===== Rikiavimo algoritmai
 
 // Funkcija: išrinkimo rikiavimas (Selection sort), rikiuoja didėjimo tvarka
 // Parametrai: a - vektorius (modifikuojamas vietoje);
@@ -245,9 +231,7 @@ void mergeSort(vector<int> &a, uint64_t &palyginimai, uint64_t &priskyrimai)
     mergeSortRek(a, 0, static_cast<int>(a.size()) - 1, palyginimai, priskyrimai);
 }
 
-// ============================================================
 // ===== Eksperimento vykdymas =====
-// ============================================================
 
 // Funkcija: paleidžia vieną rikiavimą, matuoja laiką ir skaitiklius
 // Parametrai: pradinis - originalūs duomenys; algoritmas - "SelectionSort" arba "MergeSort";
@@ -274,9 +258,7 @@ long long paleistiRikiavima(const vector<int> &pradinis, const string &algoritma
     return duration_cast<microseconds>(pabaiga - pradzia).count();
 }
 
-// ============================================================
 // ===== Rezultatų išvedimas =====
-// ============================================================
 
 // Funkcija: surašo visus bandymų rezultatus į CSV failą
 // Parametrai: rezultatai - visų bandymų vektorius; failoVardas - išvesties failas
@@ -413,9 +395,7 @@ void spausdintiLentele(const vector<AvgResult> &vid)
     cout << string(92, '-') << "\n";
 }
 
-// ============================================================
 // ===== Pagrindinė funkcija (main) =====
-// ============================================================
 
 int main()
 {
